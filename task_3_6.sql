@@ -51,4 +51,4 @@ FROM   (SELECT p.year,
                AND t1.NAME <> t2.NAME
                AND t1.pub_count < t2.pub_count) AS t3
 ORDER  BY t3.year,
-          t3.NAME  
+          t3.NAME

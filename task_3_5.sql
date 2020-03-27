@@ -1,6 +1,13 @@
-select a3."name" , count(distinct a2.author_id) as collab_count
-from authored a , authored a2 , author a3 
-where a.pub_id = a2.pub_id  and a.author_id <> a2.author_id and a.author_id = a3.author_id 
-group by a3.author_id , a3."name" 
-order by count(distinct a2.author_id) desc, a3."name" 
-limit 1000
+ SELECT a3."name",
+       Count(DISTINCT a2.author_id) AS collab_count
+FROM   authored a,
+       authored a2,
+       author a3
+WHERE  a.pub_id = a2.pub_id
+       AND a.author_id <> a2.author_id
+       AND a.author_id = a3.author_id
+GROUP  BY a3.author_id,
+          a3."name"
+ORDER  BY Count(DISTINCT a2.author_id) DESC,
+          a3."name"
+LIMIT  1000  
