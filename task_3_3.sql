@@ -1,4 +1,4 @@
- SELECT a."name" AS NAME,
+SELECT a."name" AS NAME,
        Count(*) AS pub_count
 FROM   (SELECT f.pub_key,
                f.field_value

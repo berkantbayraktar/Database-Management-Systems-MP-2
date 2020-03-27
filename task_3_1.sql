@@ -1,4 +1,4 @@
- SELECT a2."name" as author_name ,
+SELECT a2."name" as author_name ,
        Count(*) AS pub_count
 FROM   author a2,
        authored a

@@ -1,4 +1,4 @@
- SELECT a3."name",
+SELECT a3."name",
        Count(DISTINCT a2.author_id) AS collab_count
 FROM   authored a,
        authored a2,

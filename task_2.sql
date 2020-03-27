@@ -2,7 +2,7 @@ INSERT INTO author
             (name)
 SELECT DISTINCT f.field_value
 FROM   field f
-WHERE  f.field_name = 'author'  
+WHERE  f.field_name = 'author';  
 
 INSERT INTO publication
             (pub_key,
@@ -23,7 +23,7 @@ FROM   (SELECT p.pub_key,
                field f
         WHERE  p.pub_key = f.pub_key
                AND f.field_name = 'year') AS pkey_year
-WHERE  pkey_title.pub_key = pkey_year.pub_key 
+WHERE  pkey_title.pub_key = pkey_year.pub_key; 
 
 INSERT INTO article
             (pub_id,
@@ -71,7 +71,7 @@ FROM   pub p
               ON p.pub_key = pubk_number.pub_key
        LEFT JOIN "publication" AS p2
               ON p.pub_key = p2.pub_key
-WHERE  p.pub_type = 'article'
+WHERE  p.pub_type = 'article';
 
 
 INSERT INTO book
@@ -101,7 +101,7 @@ FROM   pub p
               ON p.pub_key = pkey_isbn.pub_key
        LEFT JOIN "publication" AS p2
               ON p.pub_key = p2.pub_key
-WHERE  p.pub_type = 'book' 
+WHERE  p.pub_type = 'book'; 
 
 INSERT INTO incollection
             (pub_id,
@@ -140,7 +140,7 @@ FROM   pub p
               ON p.pub_key = pkey_isbn.pub_key
        LEFT JOIN "publication" AS p2
               ON p.pub_key = p2.pub_key
-WHERE  p.pub_type = 'incollection'
+WHERE  p.pub_type = 'incollection';
 
 
 INSERT INTO inproceedings
@@ -169,7 +169,7 @@ FROM   pub p
               ON p.pub_key = pkey_editor.pub_key
        LEFT JOIN "publication" AS p2
               ON p.pub_key = p2.pub_key
-WHERE  p.pub_type = 'inproceedings'  
+WHERE  p.pub_type = 'inproceedings';  
 
 INSERT INTO authored
             (author_id,
@@ -188,4 +188,4 @@ FROM   (SELECT p.pub_key,
        LEFT JOIN "publication" AS p2
               ON p2.pub_key = pkey_author.pub_key
        LEFT JOIN author AS a2
-              ON a2."name" = pkey_author.field_value  
+              ON a2."name" = pkey_author.field_value;  

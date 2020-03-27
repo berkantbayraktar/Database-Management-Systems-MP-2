@@ -1,4 +1,4 @@
- SELECT a."name" AS author_name,
+SELECT a."name" AS author_name,
        Count(*) AS pub_count
 FROM   field f,
        publication p,
