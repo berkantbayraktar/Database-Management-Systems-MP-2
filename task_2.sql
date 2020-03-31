@@ -171,21 +171,18 @@ FROM   pub p
               ON p.pub_key = p2.pub_key
 WHERE  p.pub_type = 'inproceedings';  
 
-INSERT INTO authored
-            (author_id,
-             pub_id)
-SELECT a2.author_id AS author_id,
-       p2.pub_id    AS pub_id
-FROM   (SELECT p.pub_key,
-               f.field_value,
-               Count(*)
-        FROM   pub p,
-               field f
-        WHERE  p.pub_key = f.pub_key
-               AND f.field_name = 'author'
-        GROUP  BY p.pub_key,
-                  f.field_value) AS pkey_author
-       LEFT JOIN "publication" AS p2
-              ON p2.pub_key = pkey_author.pub_key
-       LEFT JOIN author AS a2
-              ON a2."name" = pkey_author.field_value;  
+INSERT INTO authored 
+            (author_id, 
+             pub_id) 
+SELECT DISTINCT a2.author_id AS author_id, 
+                p2.pub_id    AS pub_id 
+FROM   (SELECT p.pub_key, 
+               f.field_value 
+        FROM   pub p, 
+               field f 
+        WHERE  p.pub_key = f.pub_key 
+               AND f.field_name = 'author') AS pkey_author 
+       LEFT JOIN "publication" AS p2 
+              ON p2.pub_key = pkey_author.pub_key 
+       LEFT JOIN author AS a2 
+              ON a2."name" = pkey_author.field_value;      

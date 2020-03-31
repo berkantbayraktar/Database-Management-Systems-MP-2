@@ -1,2 +1,3 @@
-create index pub_key_type on pub(pub_key,pub_type);
-create index field_key on field(pub_key);
+alter table pub add primary key (pub_key);
+create index pub_i on pub(pub_key); 
+alter table field add foreign key (pub_key) references pub(pub_key);
